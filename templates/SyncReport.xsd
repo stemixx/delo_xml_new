@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.eos.ru/2010/sev" elementFormDefault="qualified" targetNamespace="http://www.eos.ru/2010/sev" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:include schemaLocation="CommonInfo.xsd" />
+
+	<xs:element name="SyncReport" nillable="true" type="tns:SyncReport" />
+
+	<xs:complexType name="SyncReport">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseComplexType">
+				<xs:sequence>
+					<xs:element name="Header" type="tns:MessageHeader" />
+					<xs:element name="SyncDepartments" minOccurs="0" type="tns:SyncDepartmentsReport" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="SyncDepartmentsReport">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseComplexType">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="ResultContact" type="tns:ResultContact" />
+				</xs:sequence>
+				<xs:attribute name="OperationName" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResultContact">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseComplexType">
+				<xs:sequence>
+					<xs:element name="SyncContact" type="tns:SyncContact" />
+					<xs:element name="ResultInfo" type="tns:ResultInfo" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="SyncContact">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseComplexType">
+				<xs:sequence>
+					<xs:element name="Contact" type="tns:Contact" />
+					<xs:element name="ContactInfo" type="tns:ContactInfo" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ContactInfo">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseComplexType">
+				<xs:attribute name="Deleted" type="xs:boolean" use="required" />
+				<xs:attribute name="IdentityCode" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ResultInfo">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseComplexType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="unbounded" name="Result" type="tns:Result" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="Result">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Добавлен" />
+			<xs:enumeration value="Присвоен идент.код ДЛ" />
+			<xs:enumeration value="Изменено поле ФИО" />
+			<xs:enumeration value="Изменено поле Должность" />
+			<xs:enumeration value="Изменено поле Подразделение" />
+			<xs:enumeration value="Лог. удален/восстановлен" />
+			<xs:enumeration value="Изменен Индекс СЭВ" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+</xs:schema>	

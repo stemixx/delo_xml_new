@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Envelop" nillable="true" type="Envelop" />
+  <xs:complexType name="Envelop">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Address" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MessageDir" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Channel" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Subject" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Body" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Sender" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FailureFile" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiptDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

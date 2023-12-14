@@ -1,0 +1,4 @@
+﻿<xs:schema xmlns:tns="http://www.eos.ru/2010/sev/Ext2015" elementFormDefault="qualified" targetNamespace="http://www.eos.ru/2010/sev/Ext2015" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:attribute name="eTag" type="xs:string" />
+</xs:schema>
+  
